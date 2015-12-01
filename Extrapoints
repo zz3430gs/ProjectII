@@ -1,0 +1,37 @@
+package com.Joe;
+
+
+import java.util.Random;
+
+//Will be the obstacles in the way of the snake
+
+public class ExtraPoints {
+
+    private int extraPointsX;//It will be objects that will get in the way of the snake
+    private int extraPointsY;//So that if it hits it, then it will be game over
+
+    public ExtraPoints(Snake s){
+        moveExtraPoints(s);
+    }
+    protected void moveExtraPoints(Snake s) {
+
+        Random rng = new Random();
+        boolean ExtraPoints = true;
+        while (ExtraPoints == true) {
+
+            extraPointsX = rng.nextInt(SnakeGame.xSquares);
+            extraPointsY = rng.nextInt(SnakeGame.ySquares);
+
+            ExtraPoints = s.isSnakeSegments(extraPointsX,extraPointsY);
+
+        }
+    }
+
+    public int getExtraPointsX() {
+        return extraPointsX;
+    }
+    public int getExtraPointsY() {
+        return extraPointsY;
+    }
+}
+
